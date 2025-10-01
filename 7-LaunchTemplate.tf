@@ -1,12 +1,13 @@
-######################################
 # EC2-Instance
-
-
 resource "aws_instance" "web" {
   ami                         = "ami-0bed3b2519c0c407f" # Replace with your desired AMI ID (https://cloud-images.ubuntu.com/locator/ec2/)
   associate_public_ip_address = true
   instance_type               = "t3.micro"
   subnet_id                   = aws_subnet.public-eu-west-1a.id
+
+  user_data = base64encode(
+    templatefile("${path.module}/templates/instance_tf.tpl", {})
+  )
 
   root_block_device {
     delete_on_termination = true
@@ -19,9 +20,38 @@ resource "aws_instance" "web" {
   }
 }
 
-######################################
+resource "aws_security_group" "web_sg" {
+  name        = "ec2-templating-sg"
+  description = "Allow traffic"
+
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "web-proxy-access"
+  }
+}
+
+output "endpoint" {
+  value = "${aws_instance.web.public_ip}:80"
+}
+
 
 /*
+######################################
+# Launch Template
+
 resource "aws_launch_template" "app1_LT" {
   name_prefix   = "app1_LT"
   image_id      = "ami-06ed60ed1369448bd"
