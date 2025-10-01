@@ -1,24 +1,27 @@
 ######################################
 # EC2-Instance
 
-/*
+
 resource "aws_instance" "web" {
-  ami                         = "ami-06ed60ed1369448bd" # Replace with your desired AMI ID (https://cloud-images.ubuntu.com/locator/ec2/)
+  ami                         = "ami-0bed3b2519c0c407f" # Replace with your desired AMI ID (https://cloud-images.ubuntu.com/locator/ec2/)
   associate_public_ip_address = true
-  instance_type               = aws_launch_template.app1_LT.image_id
+  instance_type               = "t3.micro"
   subnet_id                   = aws_subnet.public-eu-west-1a.id
-  # key_name      = "MyLinuxBox"
-  # ... other configurations like security groups, tags, etc.
+
   root_block_device {
     delete_on_termination = true
     # volume_size           = 10
     # volume_type           = "gp3"
   }
+
+  tags = {
+    Name = "Ubuntu"
+  }
 }
-*/
+
 ######################################
 
-
+/*
 resource "aws_launch_template" "app1_LT" {
   name_prefix   = "app1_LT"
   image_id      = "ami-06ed60ed1369448bd"
@@ -88,3 +91,4 @@ resource "aws_launch_template" "app1_LT" {
     create_before_destroy = true
   }
 }
+*/

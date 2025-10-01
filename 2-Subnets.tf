@@ -1,4 +1,4 @@
-#These are   for  public
+# These are for public
 
 resource "aws_subnet" "public-eu-west-1a" {
   vpc_id                  = aws_vpc.order66.id
