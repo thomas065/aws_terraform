@@ -14,7 +14,7 @@ resource "aws_subnet" "public-eu-west-1a" {
   }
 }
 
-/*
+
 resource "aws_subnet" "public-eu-west-1b" {
   vpc_id                  = aws_vpc.order66.id
   cidr_block              = "10.32.2.0/24"
@@ -71,7 +71,6 @@ resource "aws_subnet" "private-eu-west-1b" {
   }
 }
 
-
 resource "aws_subnet" "private-eu-west-1c" {
   vpc_id            = aws_vpc.order66.id
   cidr_block        = "10.32.13.0/24"
@@ -84,4 +83,3 @@ resource "aws_subnet" "private-eu-west-1c" {
     Planet  = "Musafar"
   }
 }
-*/
