@@ -1,16 +1,4 @@
-/*
-
-resource "aws_launch_template" "app1_LT" {
-  name_prefix   = "app1_LT"
-  image_id      = "ami-06ed60ed1369448bd"
-  instance_type = "t2.micro"
-
-  key_name = "MyLinuxBox"
-
-  vpc_security_group_ids = [aws_security_group.app1-sg01-servers.id]
-
-  user_data = base64encode(<<-EOF
-    #!/bin/bash
+#!/bin/bash
     yum update -y
     yum install -y httpd
     systemctl start httpd
@@ -52,22 +40,3 @@ resource "aws_launch_template" "app1_LT" {
 
     # Clean up the temp files
     rm -f /tmp/local_ipv4 /tmp/az /tmp/macid
-  EOF
-  )
-
-  tag_specifications {
-    resource_type = "instance"
-    tags = {
-      Name    = "app1_LT"
-      Service = "application1"
-      Owner   = "ThomasBell"
-      Planet  = "DeathStar"
-    }
-  }
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
-*/
