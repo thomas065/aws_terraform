@@ -6,6 +6,8 @@ resource "aws_instance" "web" {
   instance_type               = "t3.micro"
   subnet_id                   = aws_subnet.public-eu-west-1a.id
 
+  user_data = base64encode("/templates/instance_tf.tpl", {})
+
   root_block_device {
     delete_on_termination = true
     # volume_size           = 10
