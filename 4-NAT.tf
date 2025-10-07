@@ -16,3 +16,11 @@ resource "aws_nat_gateway" "nat" {
 
   depends_on = [aws_internet_gateway.igw]
 }
+
+output "endpoint1" {
+  value = "http://${aws_eip.nat.public_ip}:80"
+}
+
+output "endpoint2" {
+  value = "http://${aws_eip.nat.public_dns}:80"
+}

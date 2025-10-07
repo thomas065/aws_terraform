@@ -1,5 +1,5 @@
 # EC2-Instance
-
+/*
 resource "aws_instance" "web" {
   ami                         = "ami-0bed3b2519c0c407f" # Replace with your desired AMI ID (https://cloud-images.ubuntu.com/locator/ec2/)
   associate_public_ip_address = true
@@ -24,3 +24,5 @@ resource "aws_instance" "web" {
 output "endpoint" {
   value = "${aws_instance.web.public_ip}:80"
 }
+
+*/

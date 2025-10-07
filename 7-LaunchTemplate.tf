@@ -1,4 +1,3 @@
-/*
 
 resource "aws_launch_template" "app1_LT" {
   name_prefix   = "app1_LT"
@@ -8,6 +7,10 @@ resource "aws_launch_template" "app1_LT" {
   key_name = "MyLinuxBox"
 
   vpc_security_group_ids = [aws_security_group.app1-sg01-servers.id]
+
+  #  user_data = base64encode(
+  #     templatefile("${path.module}/templates/instance_tf.tpl", {})
+  #   )
 
   user_data = base64encode(<<-EOF
     #!/bin/bash
@@ -70,4 +73,3 @@ resource "aws_launch_template" "app1_LT" {
   }
 }
 
-*/
