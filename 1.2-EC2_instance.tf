@@ -22,6 +22,6 @@ resource "aws_instance" "web" {
 }
 
 output "endpoint_ec2" {
-  value = "http://${aws_instance.web.public_ip}:80"
+  value = "http://${aws_instance.web.public_dns}:80"
 }
 
