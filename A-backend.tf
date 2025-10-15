@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "deathstarbucket66"
+    bucket = "mylocalterraform"
     key    = "MyLinuxBox"
     region = "eu-west-1"
   }
