@@ -9,4 +9,11 @@ terraform {
 
 provider "aws" {
   region = "eu-west-1"
+
+  default_tags {
+    tags = {
+      Environment = "Sunday_Demo"
+      ManagedBy   = "Terraform"
+    }
+  }
 }

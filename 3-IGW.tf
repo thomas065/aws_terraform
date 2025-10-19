@@ -1,10 +1,10 @@
-resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.order66.id
+# resource "aws_internet_gateway" "igw" {
+#   vpc_id = aws_vpc.order66.id
 
-  tags = {
-    Name    = "app1_IG"
-    Service = "application1"
-    Owner   = "Luke"
-    Planet  = "Musafar"
-  }
-}
+#   tags = {
+#     Name    = "app1_IG"
+#     Service = "application1"
+#     Owner   = "Luke"
+#     Planet  = "Musafar"
+#   }
+# }
