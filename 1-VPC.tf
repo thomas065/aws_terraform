@@ -7,10 +7,14 @@ resource "aws_vpc" "order66" {
     Name    = "${var.env_prefix}-vpc"
     Service = "application1"
     Owner   = "ThomasBell"
-    Planet  = "DeathStar"
+    Planet  = "Naboo"
   }
 }
 
 output "vpc_tags" {
   value = aws_vpc.order66.tags_all
+}
+
+output "vpc_cidr_block" {
+  value = aws_vpc.order66.cidr_block
 }
